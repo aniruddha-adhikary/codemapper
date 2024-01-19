@@ -36,3 +36,12 @@ graph TD
     MethodSummary --> SubMethodSummary[Sub-Method Summary]
 
 ```
+
+### Cross-file relationships
+
+Further context needs to be built often to understand how some constants, functions are being used....
+
+```mermaid
+graph LR
+    SummarizeConstant[Summarize Const] --> LookupUsage[Lookup Usages] --> CompilePurpose
+```
