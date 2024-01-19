@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-- family-names: "Aniruddha Adhikary"
-  given-names: "Mona"
+- family-names: "Adhikary"
+  given-names: "Aniruddha"
   orcid: "https://orcid.org/0009-0002-5870-5129"
 title: "Codemapper"
 version: 0.0.1
