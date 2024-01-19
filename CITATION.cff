@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Aniruddha Adhikary"
+  given-names: "Mona"
+  orcid: "https://orcid.org/0009-0002-5870-5129"
+title: "Codemapper"
+version: 0.0.1
+# doi: 10.5281/zenodo.1234
+date-released: 2024-01-20
+url: "https://github.com/aniruddha-adhikary/codemapper"
