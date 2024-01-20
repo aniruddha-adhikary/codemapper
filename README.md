@@ -50,3 +50,9 @@ graph LR
 
 Could the index be a tree-like structure... where the context gets smaller and smaller as you go down,
 and stays limited to the scope of classes, functions... whatever is "selected"... and that's it...
+
+## Running Tests
+
+```shell
+poetry run pytest
+```
