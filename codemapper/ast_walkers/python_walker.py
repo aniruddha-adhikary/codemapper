@@ -50,4 +50,16 @@ def augment_summary(code):
 
 
 if __name__ == "__main__":
-    print(augment_summary(requests.get('https://raw.githubusercontent.com/impira/docquery/main/src/docquery/ocr_reader.py').text))
+    print(augment_summary("""
+from django.views.generic import TemplateView
+
+class MyCustomView(TemplateView):
+    template_name = 'my_template.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['my_data'] = map(lambda x: x * 2, range(10))
+        context['profile'] = transform(load_profile())
+        context['subscription'] = load_data()
+        return context
+   """))
