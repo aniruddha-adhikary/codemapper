@@ -29,15 +29,13 @@ def _summarise(content_type: str, code: str, max_tokens: int) -> str:
 
     return response.choices[0].message.content
 
+
 def summarise_code(code: str, max_tokens: int = 100) -> str:
     return _summarise("function", code, max_tokens)
 
 
 def summarise_class(code: str, max_tokens: int = 100) -> str:
     return _summarise("class", code, max_tokens)
-
-def summarise_code(code: str, max_tokens: int = 100) -> str:
-    return _summarise("function", code, max_tokens)
 
 
 def summarise_file(code: str, max_tokens: int = 100) -> str:
