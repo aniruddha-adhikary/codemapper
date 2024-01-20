@@ -11,7 +11,7 @@ summary_configuration = dict(
 )
 
 
-def summarise_code(code: str, max_tokens: int = 100) -> str:
+def _summarise(content_type: str, code: str, max_tokens: int) -> str:
     response = client.chat.completions.create(
         messages=[
             {
@@ -20,7 +20,7 @@ def summarise_code(code: str, max_tokens: int = 100) -> str:
             },
             {
                 "role": "user",
-                "content": f"What is the purpose of this function, one liner?\n\n{code}"
+                "content": f"What is the purpose of this {content_type}, one liner?\n\n{code}"
             }
         ],
         max_tokens=max_tokens,
@@ -28,41 +28,17 @@ def summarise_code(code: str, max_tokens: int = 100) -> str:
     )
 
     return response.choices[0].message.content
+
+def summarise_code(code: str, max_tokens: int = 100) -> str:
+    return _summarise("function", code, max_tokens)
 
 
 def summarise_class(code: str, max_tokens: int = 100) -> str:
-    response = client.chat.completions.create(
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a helpful assistant who helps to summarise code."
-            },
-            {
-                "role": "user",
-                "content": f"What is the purpose of this class, one liner?\n\n{code}"
-            }
-        ],
-        max_tokens=max_tokens,
-        **summary_configuration,
-    )
+    return _summarise("class", code, max_tokens)
 
-    return response.choices[0].message.content
+def summarise_code(code: str, max_tokens: int = 100) -> str:
+    return _summarise("function", code, max_tokens)
 
 
 def summarise_file(code: str, max_tokens: int = 100) -> str:
-    response = client.chat.completions.create(
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a helpful assistant who helps to summarise code."
-            },
-            {
-                "role": "user",
-                "content": f"What is the purpose of this module/file, one liner?\n\n{code}"
-            }
-        ],
-        max_tokens=max_tokens,
-        **summary_configuration,
-    )
-
-    return response.choices[0].message.content
+    return _summarise("module/file", code, max_tokens)
