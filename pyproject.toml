@@ -5,6 +5,11 @@ description = "Semantic, relational and hierarchical code indexing aided by summ
 authors = ["Aniruddha Adhikary <932949+aniruddha-adhikary@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/aniruddha-adhikary/codemapper"
+
+packages = [
+    {include = "codemapper"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
