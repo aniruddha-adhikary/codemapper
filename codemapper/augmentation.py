@@ -28,3 +28,41 @@ def summarise_code(code: str, max_tokens: int = 100) -> str:
     )
 
     return response.choices[0].message.content
+
+
+def summarise_class(code: str, max_tokens: int = 100) -> str:
+    response = client.chat.completions.create(
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful assistant who helps to summarise code."
+            },
+            {
+                "role": "user",
+                "content": f"What is the purpose of this class, one liner?\n\n{code}"
+            }
+        ],
+        max_tokens=max_tokens,
+        **summary_configuration,
+    )
+
+    return response.choices[0].message.content
+
+
+def summarise_file(code: str, max_tokens: int = 100) -> str:
+    response = client.chat.completions.create(
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful assistant who helps to summarise code."
+            },
+            {
+                "role": "user",
+                "content": f"What is the purpose of this module/file, one liner?\n\n{code}"
+            }
+        ],
+        max_tokens=max_tokens,
+        **summary_configuration,
+    )
+
+    return response.choices[0].message.content
