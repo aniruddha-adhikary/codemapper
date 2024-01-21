@@ -1,4 +1,5 @@
 import ast
+import sys
 
 import astor
 import requests
@@ -50,16 +51,10 @@ def augment_summary(code):
 
 
 if __name__ == "__main__":
-    print(augment_summary("""
-from django.views.generic import TemplateView
+    file_name = sys.argv[1]
 
-class MyCustomView(TemplateView):
-    template_name = 'my_template.html'
+    with open(file_name, 'r') as f:
+        content = f.read()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['my_data'] = map(lambda x: x * 2, range(10))
-        context['profile'] = transform(load_profile())
-        context['subscription'] = load_data()
-        return context
-   """))
+    with open(file_name, 'w') as f:
+        f.write(augment_summary(content))
